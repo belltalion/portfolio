@@ -13,10 +13,9 @@
     "react": "19.2.4",
     "react-dom": "19.2.4",
     "framer-motion": "^12",
-    "@devup-ui/react": "^1",
-    "@devup-ui/next-plugin": "^1",
-    "@devup-ui/reset-css":"^1",
-    "dayjs": "^1"
+    "dayjs": "^1",
+    "next-intl": "^4",
+    "lenis": "^1"
   },
   "devDependencies": {
     "@tailwindcss/postcss": "^4",
@@ -27,6 +26,7 @@
     "eslint-config-next": "16.2.3",
     "tailwindcss": "^4",
     "typescript": "^5",
-    "babel-plugin-react-compiler": "^1"
+    "babel-plugin-react-compiler": "^1",
+    "sanitize": "^2"
   }
 }
