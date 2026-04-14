@@ -29,63 +29,105 @@ const CONTENTS = [
    },
 ]
 
+const TECH_STACKS = ['React', 'Next', 'Vite', 'Rust', 'Axum', 'Fast Api', 'Python', 'Framer Motion']
+
 const CAPTIONS = ['Based in Anyang', 'Team Lead at DevFive', 'Computer Science B.S.']
 
 export function SectionOne() {
    return (
       <section
          className={clsx(
-            'flex h-screen flex-col items-center justify-center overflow-hidden',
-            'md:flex-row md:justify-between',
+            'flex flex-col items-center overflow-hidden md:justify-center',
+            'md:h-screen md:flex-row md:justify-between',
             'mx-auto w-[100%] max-w-[1024px] px-4',
             'gap-10',
             'border-b border-zinc-900',
          )}
       >
-         <div className="z-10 flex h-fit flex-col gap-5">
-            <span className={clsx('sm:text-md font-mono text-xs', 'text-blue-500')}>
-               <MotionText
-                  transition={{
-                     duration: 0.8,
-                     repeat: Infinity,
-                  }}
-                  animate={{ opacity: [1, 0] }}
+         <div className="z-10 flex h-screen flex-col justify-center gap-5 md:h-fit">
+            <TiltCard className="w-fit p-2">
+               <div className={'overflow-hidden'}>
+                  <MotionDiv
+                     initial={{
+                        y: '100%',
+                     }}
+                     transition={{
+                        delay: 1,
+                        duration: 0.4,
+                        ease: 'easeOut',
+                     }}
+                     animate={{
+                        y: 0,
+                     }}
+                     className={clsx('sm:text-md font-mono text-xs', 'text-blue-500')}
+                  >
+                     <MotionText
+                        transition={{
+                           duration: 0.8,
+                           repeat: Infinity,
+                        }}
+                        animate={{ opacity: [1, 0] }}
+                     >
+                        _
+                     </MotionText>{' '}
+                     Full-stack Lead to Frontend focused
+                  </MotionDiv>
+               </div>
+            </TiltCard>
+            <TiltCard>
+               <span
+                  className={clsx(
+                     'leading-none font-bold tracking-tighter text-white',
+                     'text-6xl md:text-7xl lg:text-8xl',
+                  )}
                >
-                  _
-               </MotionText>{' '}
-               Full-stack Lead to Frontend focused
-            </span>
-            <span
-               className={clsx(
-                  'leading-none font-bold tracking-tighter text-white',
-                  'text-4xl sm:text-6xl md:text-7xl lg:text-8xl',
-               )}
-            >
-               <TypeText text="LEE" />
-               <br /> <TypeText delay={0.3} text="TAEHYUN" />
-            </span>
+                  <TypeText text="LEE" />
+                  <br /> <TypeText delay={0.3} text="TAEHYEON" />
+               </span>
+            </TiltCard>
             <div
                className={clsx('z-10 flex flex-wrap font-medium text-zinc-500', 'gap-x-6 gap-y-4')}
             >
                {CAPTIONS.map((v, idx) => (
-                  <p className="text-xs md:text-sm" key={'caption' + idx}>
-                     <span className="mr-2 text-zinc-700">0{idx + 1}</span> {v}
-                  </p>
+                  <TiltCard key={'caption' + idx}>
+                     <MotionText
+                        transition={{
+                           delay: 1.2,
+                           duration: 0.6 + 0.1 * idx,
+                           ease: 'easeOut',
+                        }}
+                        initial={{
+                           y: 10,
+                           opacity: 0,
+                           filter: 'blur(10px)',
+                        }}
+                        animate={{
+                           y: 0,
+                           opacity: 1,
+                           filter: 'blur(0)',
+                        }}
+                     >
+                        <span className="text-xs md:text-sm">
+                           <span className="mr-2 text-zinc-700">0{idx + 1}</span> {v}
+                        </span>
+                     </MotionText>
+                  </TiltCard>
                ))}
             </div>
          </div>
-         <div className="flex flex-col gap-4 md:gap-8">
+         <MotionDiv className="flex flex-col gap-2 sm:gap-4 md:gap-8" viewport={{ once: true }}>
             {CONTENTS.map(({ title, content }, idx) => (
                <MotionDiv
                   initial={{
-                     x: -50,
+                     x: -20,
                      opacity: 0,
                      filter: 'blur(10px)',
                   }}
                   transition={{
+                     duration: 0.4,
                      delay: 1 + idx * 0.3,
                   }}
-                  animate={{
+                  whileInView={{
                      x: 0,
                      opacity: 1,
                      filter: 'blur(0px)',
@@ -96,7 +138,7 @@ export function SectionOne() {
                   }
                   className={clsx(`ml-[var(--ml)] md:ml-[var(--md-ml)]`)}
                >
-                  <TiltCard>
+                  <TiltCard className="flex flex-col gap-1 border-l-1 border-zinc-800 p-2 pl-4">
                      <p
                         className={clsx(
                            'font-mono text-sm tracking-widest text-zinc-500 uppercase',
@@ -116,7 +158,7 @@ export function SectionOne() {
                   </TiltCard>
                </MotionDiv>
             ))}
-         </div>
+         </MotionDiv>
       </section>
    )
 }
