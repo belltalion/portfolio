@@ -1,9 +1,9 @@
 import type { NextConfig } from 'next'
 
 const nextConfig: NextConfig = {
-   output: 'standalone',
-   experimental: {
-      optimizePackageImports: ['@devup-ui/reset-css'],
+   output: 'export',
+   images: {
+      unoptimized: true,
    },
    reactCompiler: true,
 }
