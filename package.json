@@ -4,10 +4,11 @@
    "private": true,
    "scripts": {
       "dev": "next dev --port 4000",
+      "postbuild": "node createNoJekyll.js",
       "build": "next build",
       "start": "next start",
       "lint": "eslint",
-      "deploy": "gh-pages -d out"
+      "deploy": "gh-pages -d out --dotfiles"
    },
    "dependencies": {
       "clsx": "^2.1.1",
