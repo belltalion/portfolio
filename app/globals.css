@@ -1,2 +1,9 @@
-@import "sanitize.css/sanitize.css";
-@import "tailwindcss";
+@import 'sanitize.css/sanitize.css';
+@import 'tailwindcss';
+
+body {
+   -webkit-user-select: none;
+   -moz-user-select: none;
+   -ms-user-select: none;
+   user-select: none;
+}

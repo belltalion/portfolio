@@ -56,7 +56,7 @@ export function TiltCard({
             transformStyle: 'preserve-3d',
             touchAction: 'none', // 모바일에서 터치 시 스크롤 방지 (선택 사항)
          }}
-         className="relative rounded-2xl from-white/20 to-white/5"
+         className="relative w-fit rounded-2xl from-white/20 to-white/5"
       >
          <div
             style={{
@@ -64,7 +64,7 @@ export function TiltCard({
                transformStyle: 'preserve-3d',
             }}
             className={clsx(
-               'outline-zinc-600 active:outline-[1px] md:hover:outline-[1px]',
+               'w-fit outline-zinc-600 active:outline-[1px] md:hover:outline-[1px]',
                className,
             )}
          >

@@ -35,9 +35,9 @@ export function SectionOne() {
    return (
       <section
          className={clsx(
-            'flex flex-col items-center overflow-hidden md:justify-center',
+            'flex flex-col items-center overflow-hidden md:justify-between',
             'md:h-screen md:flex-row md:justify-between',
-            'mx-auto w-[100%] max-w-[1024px] px-4',
+            'mx-auto w-[100%] max-w-[1200px] px-10',
             'gap-10',
             'border-b border-zinc-900',
          )}
@@ -87,7 +87,7 @@ export function SectionOne() {
                className={clsx('z-10 flex flex-wrap font-medium text-zinc-500', 'gap-x-6 gap-y-4')}
             >
                {CAPTIONS.map((v, idx) => (
-                  <TiltCard key={'caption' + idx}>
+                  <TiltCard key={'caption' + idx} className="p-1">
                      <MotionText
                         transition={{
                            delay: 1.2,
@@ -113,22 +113,29 @@ export function SectionOne() {
                ))}
             </div>
          </div>
-         <MotionDiv className="flex flex-col gap-2 sm:gap-4 md:gap-8" viewport={{ once: true }}>
+         <MotionDiv
+            className="flex h-screen flex-col gap-15 md:h-fit md:gap-8"
+            viewport={{ once: true }}
+            initial={'init'}
+            whileInView={'view'}
+         >
             {CONTENTS.map(({ title, content }, idx) => (
                <MotionDiv
-                  initial={{
-                     x: -20,
-                     opacity: 0,
-                     filter: 'blur(10px)',
+                  variants={{
+                     init: {
+                        x: -20,
+                        opacity: 0,
+                        filter: 'blur(10px)',
+                     },
+                     view: {
+                        x: 0,
+                        opacity: 1,
+                        filter: 'blur(0px)',
+                     },
                   }}
                   transition={{
                      duration: 0.4,
                      delay: 1 + idx * 0.3,
-                  }}
-                  whileInView={{
-                     x: 0,
-                     opacity: 1,
-                     filter: 'blur(0px)',
                   }}
                   key={'item-' + idx}
                   style={
@@ -136,11 +143,11 @@ export function SectionOne() {
                   }
                   className={clsx(`ml-[var(--ml)] md:ml-[var(--md-ml)]`)}
                >
-                  <TiltCard className="flex flex-col gap-1 border-l-1 border-zinc-800 p-2 pl-4">
+                  <TiltCard className="flex flex-col gap-1 border-l-1 border-zinc-800 p-0 pl-4 md:p-2">
                      <p
                         className={clsx(
                            'font-mono text-sm tracking-widest text-zinc-500 uppercase',
-                           'sm:text-md text-xs md:text-lg',
+                           'md:text-md text-sm',
                         )}
                      >
                         {title}
@@ -148,7 +155,7 @@ export function SectionOne() {
                      <p
                         className={clsx(
                            'mt-1 font-medium text-zinc-300 md:whitespace-pre-wrap',
-                           'md:text-m text-xs sm:text-sm',
+                           'md:text-md text-sm',
                         )}
                      >
                         {content}
