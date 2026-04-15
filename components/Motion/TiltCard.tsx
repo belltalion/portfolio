@@ -2,7 +2,7 @@
 
 import clsx from 'clsx'
 import { useMotionValue, useSpring, useTransform } from 'framer-motion'
-import React from 'react'
+import React, { useState } from 'react'
 import { MotionDiv } from '.'
 
 export function TiltCard({
@@ -12,6 +12,8 @@ export function TiltCard({
    children: React.ReactNode
    className?: string
 }) {
+   const [pressed, setPressed] = useState(false)
+
    const x = useMotionValue(0)
    const y = useMotionValue(0)
 
@@ -41,6 +43,7 @@ export function TiltCard({
    const handlePointerLeave = () => {
       x.set(0)
       y.set(0)
+      setPressed(false)
    }
 
    return (
@@ -48,6 +51,8 @@ export function TiltCard({
          // 1. onPointerMove는 마우스와 터치를 모두 감지합니다.
          onPointerMove={handlePointerMove}
          onPointerLeave={handlePointerLeave}
+         onPointerDown={() => setPressed(true)}
+         onPointerUp={() => setPressed(false)}
          // 2. 모바일에서 터치 중일 때만 동작하게 하려면 whileTap을 활용해 스케일을 조절하거나 효과를 줄 수 있습니다.
          whileTap={{ scale: 0.98 }}
          style={{
@@ -64,7 +69,9 @@ export function TiltCard({
                transformStyle: 'preserve-3d',
             }}
             className={clsx(
-               'w-fit outline-zinc-600 active:outline-[1px] md:hover:outline-[1px]',
+               'w-fit outline-zinc-600',
+               'transition-shadow duration-300 md:hover:[box-shadow:var(--neon)]',
+               pressed && '[box-shadow:var(--neon)]',
                className,
             )}
          >

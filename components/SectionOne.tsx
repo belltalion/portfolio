@@ -154,6 +154,7 @@ export function SectionOne() {
                      </p>
                      <p
                         className={clsx(
+                           'break-keep',
                            'mt-1 font-medium text-zinc-300 md:whitespace-pre-wrap',
                            'md:text-md text-sm',
                         )}
