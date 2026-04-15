@@ -29,8 +29,6 @@ const CONTENTS = [
    },
 ]
 
-const TECH_STACKS = ['React', 'Next', 'Vite', 'Rust', 'Axum', 'Fast Api', 'Python', 'Framer Motion']
-
 const CAPTIONS = ['Based in Anyang', 'Team Lead at DevFive', 'Computer Science B.S.']
 
 export function SectionOne() {
