@@ -12,7 +12,7 @@ export async function generateMetadata() {
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
    return (
       <html lang="en">
-         <body className="flex flex-col bg-black">{children}</body>
+         <body className="flex flex-col bg-black pb-20">{children}</body>
       </html>
    )
 }

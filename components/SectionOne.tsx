@@ -39,7 +39,6 @@ export function SectionOne() {
             'md:h-screen md:flex-row md:justify-between',
             'mx-auto w-[100%] max-w-[1200px] px-10',
             'gap-10',
-            'border-b border-zinc-900',
          )}
       >
          <div className="z-10 flex h-screen flex-col justify-center gap-5 md:h-fit">

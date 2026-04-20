@@ -8,9 +8,11 @@ import { MotionDiv } from '.'
 export function TiltCard({
    children,
    className,
+   motionClassName,
 }: {
    children: React.ReactNode
    className?: string
+   motionClassName?: string
 }) {
    const [pressed, setPressed] = useState(false)
 
@@ -61,7 +63,7 @@ export function TiltCard({
             transformStyle: 'preserve-3d',
             touchAction: 'none', // 모바일에서 터치 시 스크롤 방지 (선택 사항)
          }}
-         className="relative w-fit rounded-2xl from-white/20 to-white/5"
+         className={clsx('w-fit rounded-2xl from-white/20 to-white/5', motionClassName)}
       >
          <div
             style={{
@@ -70,8 +72,8 @@ export function TiltCard({
             }}
             className={clsx(
                'w-fit outline-zinc-600',
-               'transition-shadow duration-300 md:hover:[box-shadow:var(--neon)]',
-               pressed && '[box-shadow:var(--neon)]',
+               'transition-shadow duration-300 md:hover:border-1 md:hover:border-zinc-500',
+               pressed && 'border-1 border-zinc-500',
                className,
             )}
          >
