@@ -1,4 +1,4 @@
 :HL["/portfolio/_next/static/chunks/0k-2y1~di66oa.css","style"]
 :HL["/portfolio/images/laon_swingcraft_1.png","image"]
 :HL["/portfolioimages/devfive_1.png","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}},"staleTime":300,"buildId":"GNBqePRD4Teju1cdI_2gk"}
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}},"staleTime":300,"buildId":"i0FRMzHoF97CYCfPFS28o"}
