@@ -9,7 +9,10 @@ export async function generateMetadata() {
    return meta
 }
 
-const PRELOAD_IMAGES = ['/portfolio/images/laon_swingcraft_1.png', '/portfolioimages/devfive_1.png']
+const PRELOAD_IMAGES = [
+   '/portfolio/images/laon_swingcraft_1.webp',
+   '/portfolioimages/devfive_1.webp',
+]
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {
    return (

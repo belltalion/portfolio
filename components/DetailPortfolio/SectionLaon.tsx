@@ -33,9 +33,9 @@ const DATA = [
    {
       href: 'https://laonswingcraft.com/ko',
       src: [
-         './images/laon_swingcraft_1.png',
-         './images/laon_swingcraft_2.png',
-         './images/laon_swingcraft_3.png',
+         './images/laon_swingcraft_1.webp',
+         './images/laon_swingcraft_2.webp',
+         './images/laon_swingcraft_3.webp',
       ],
       date: 'JULY. 2025 - DECEMBER. 2025',
       title: 'LAON SWINGCRAFT',
@@ -47,7 +47,7 @@ const DATA = [
    },
    {
       href: 'https://devfive.kr/ko/',
-      src: ['./images/devfive_1.png', './images/devfive_2.png', './images/devfive_3.png'],
+      src: ['./images/devfive_1.webp', './images/devfive_2.webp', './images/devfive_3.webp'],
       date: 'JULY. 2025 - DECEMBER. 2025',
       title: 'LAON SWINGCRAFT2',
       desc: '라온피플의 AI 골프 솔루션 SwingCraft 웹사이트 고도화 및 글로벌 리브랜딩',
