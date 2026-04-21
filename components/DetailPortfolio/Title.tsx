@@ -4,12 +4,8 @@ export function Title() {
    return (
       <MotionDiv
          initial="init"
-         whileInView="view"
-         className="flex w-[100%] items-center gap-2 overflow-hidden"
-         viewport={{
-            once: true,
-            margin: '-200px',
-         }}
+         animate="view"
+         className="w-[100%] items-center gap-2 overflow-hidden"
       >
          <MotionText
             className="text-2xl font-bold text-white"
@@ -35,13 +31,13 @@ export function Title() {
             }}
             variants={{
                init: {
-                  width: '0',
+                  scaleX: 0,
                },
                view: {
-                  width: '100%',
+                  scaleX: 1,
                },
             }}
-            className="h-[1px] bg-zinc-500"
+            className="h-[1px] flex-1 bg-zinc-500"
          />
       </MotionDiv>
    )

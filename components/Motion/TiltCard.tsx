@@ -2,17 +2,19 @@
 
 import clsx from 'clsx'
 import { useMotionValue, useSpring, useTransform } from 'framer-motion'
-import React, { useState } from 'react'
+import React, { CSSProperties, useState } from 'react'
 import { MotionDiv } from '.'
 
 export function TiltCard({
    children,
    className,
    motionClassName,
+   style,
 }: {
    children: React.ReactNode
    className?: string
    motionClassName?: string
+   style?: CSSProperties
 }) {
    const [pressed, setPressed] = useState(false)
 
@@ -69,6 +71,7 @@ export function TiltCard({
             style={{
                transform: 'translateZ(40px)',
                transformStyle: 'preserve-3d',
+               ...style,
             }}
             className={clsx(
                'w-fit outline-zinc-600',
