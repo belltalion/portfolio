@@ -162,7 +162,7 @@ export function SectionLaon() {
                                  </MotionDiv>
                               ))}
                            </div>
-                           <div className="flex flex-col gap-2 p-0 md:hidden">
+                           <div className="flex flex-col gap-4 p-0 md:hidden">
                               <MotionDiv
                                  transition={{
                                     duration: 0.4,
