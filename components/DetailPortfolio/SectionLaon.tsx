@@ -96,10 +96,10 @@ export function SectionLaon() {
             'gap-10',
          )}
          style={{
-            height: 100 * DATA.length + 'vh',
+            height: 100 * DATA.length + 'svh',
          }}
       >
-         <div className="sticky top-0 flex min-h-[100dvh] flex-col justify-center gap-0 md:gap-2">
+         <div className="sticky top-0 flex min-h-[100svh] flex-col justify-center gap-0 md:gap-2">
             {step >= 0 && <Title />}
             <AnimatePresence mode="wait">
                {DATA.map(
