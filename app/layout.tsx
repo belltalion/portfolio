@@ -11,7 +11,11 @@ export async function generateMetadata() {
 
 const PRELOAD_IMAGES = [
    '/portfolio/images/laon_swingcraft_1.webp',
+   '/portfolio/images/laon_swingcraft_2.webp',
+   '/portfolio/images/laon_swingcraft_3.webp',
    '/portfolioimages/devfive_1.webp',
+   '/portfolioimages/devfive_2.webp',
+   '/portfolioimages/devfive_3.webp',
 ]
 
 export default async function RootLayout({ children }: { children: React.ReactNode }) {

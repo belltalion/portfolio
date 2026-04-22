@@ -6,11 +6,13 @@ export function Title() {
          initial="init"
          animate="view"
          className="w-[100%] items-center gap-2 overflow-hidden"
+         exit="exit"
       >
          <MotionText
             className="text-2xl font-bold text-white"
             transition={{
                ease: 'easeOut',
+               duration: 0.4,
             }}
             variants={{
                init: {
@@ -19,14 +21,16 @@ export function Title() {
                view: {
                   y: '0',
                },
+               exit: {
+                  y: '100%',
+               },
             }}
          >
             PROJECTS
          </MotionText>
          <MotionDiv
             transition={{
-               delay: 1,
-               duration: 1,
+               duration: 0.4,
                ease: 'easeOut',
             }}
             variants={{
@@ -35,6 +39,9 @@ export function Title() {
                },
                view: {
                   scaleX: 1,
+               },
+               exit: {
+                  scaleX: 0,
                },
             }}
             className="h-[1px] flex-1 bg-zinc-500"

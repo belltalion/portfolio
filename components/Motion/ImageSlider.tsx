@@ -12,7 +12,7 @@ export function ImageSlider({ images, alt }: { images: string[]; alt: string }) 
 
       const timer = setInterval(() => {
          setIndex((prev) => (prev + 1) % images.length)
-      }, 3000) // 3초마다 교체
+      }, 5000) // 3초마다 교체
 
       return () => clearInterval(timer)
    }, [images])
@@ -24,16 +24,16 @@ export function ImageSlider({ images, alt }: { images: string[]; alt: string }) 
             aspectRatio: '16/9',
          }}
       >
-         <AnimatePresence mode="wait">
+         <AnimatePresence>
             <MotionImg
-               key={images[index]} // 키가 바뀌어야 애니메이션이 발생함
+               key={images[index]}
                src={images[index]}
                alt={alt}
-               className="h-full w-full object-cover"
+               className="absolute inset-0 h-full w-full object-cover"
                initial={{ opacity: 0 }}
                animate={{ opacity: 1 }}
                exit={{ opacity: 0 }}
-               transition={{ duration: 0.4 }}
+               transition={{ duration: 0.6 }}
             />
          </AnimatePresence>
       </div>
