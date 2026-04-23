@@ -1,30 +1,10 @@
 'use client'
 import clsx from 'clsx'
-import Link from 'next/link'
 import { useRef, useState } from 'react'
 import { AnimatePresence, useMotionValueEvent, useScroll } from 'framer-motion'
 import { Title } from './Title'
+import { ProjectCard } from './ProjectCard'
 import { MotionDiv } from '../Motion'
-import { ImageSlider } from '../Motion/ImageSlider'
-
-const CHILD_VARIANTS = {
-   init: {
-      y: 12,
-      opacity: 0,
-      filter: 'blur(8px)',
-   },
-   view: {
-      y: 0,
-      opacity: 1,
-      filter: 'blur(0px)',
-   },
-   exit: {
-      y: -8,
-      opacity: 0,
-      filter: 'blur(6px)',
-      transition: { delay: 0 },
-   },
-}
 
 const DATA = [
    {
@@ -40,11 +20,12 @@ const DATA = [
       stack: ['Next', 'Axum', 'Ts', 'Rust', 'PostgreSql', 'React-Native'],
       children: [
          [
-            '아이디어 단계의 프로젝트를 기획 참여 와 설계하여 클라이언트가 만족할 수 있는 프로젝트로 출시할 수 있도록 리드했습니다.',
+            '아이디어 단계의 프로젝트를 기획·설계하고 기술 스택을 총괄하여, 시장 출시가 가능한 제품으로 완성시키는 프로젝트 리더 역할을 수행했습니다."',
             '지인과 AI가 사용자에게 궁금한 질문을 하면 STT를 통해 이야기를 수집하고 AI 캐릭터 별로 교정 및 이야기 개선을 진행하여 일관된 이야기구조로 자서전을 제작할 수 있는 서비스입니다.',
          ],
          [
             'PostgreSQL 기반 26개 테이블 스키마 설계, B2C 뿐 아닌 B2B 위한 선물 시스템 DB 설계, 동반 작가, 추천사, 프로젝트-주제 연결 등 N:N 관계 설계',
+            'HTTP 요청이 끊겨도 API서버 백그라운드 내에서 AI 작업이 계속 진행될 수 있도록 tracing, traing-subscriber 적용',
             'Kakao·Naver·Google·Apple OAuth 및 JWT 인증 구현, 토스페이먼츠 결제 연동 및 환불 처리 구현, AWS S3 파일 업로드 처리',
             'Firebase 통해 모바일 기기 푸시 알림 연동, 사용자 중심 UI/UX/CX 설계, AI 프롬프트 응답 대기 CX를 Suspense·pending 으로 처리',
          ],
@@ -78,7 +59,9 @@ const DATA = [
       stack: ['Next', 'Fast-api', 'Ts', 'Python', 'PostgreSql'],
       desc: '주식회사 데브파이브의 홈페이지 및 업무관리 페이지 풀스택 개발',
       children: [
-         ['주식회사 데브파이브의 홈페이지의 글로벌 리뉴얼 및 업무 및 컨텐츠 관리 페이지 기능 설계, 구축을 진행하였습니다.'],
+         [
+            '주식회사 데브파이브의 홈페이지의 글로벌 리뉴얼 및 업무 및 컨텐츠 관리 페이지 기능 설계, 구축을 진행하였습니다.',
+         ],
          [
             '홈페이지는 Framer Motion 기반 인터렉티브 UI/UX를 제작하였습니다.',
             '홈페이지 제작 문의 시 자동으로 Slack, 카카오톡, SMS 전송 연동을 진행했습니다.',
@@ -113,96 +96,53 @@ export function SectionLaon() {
    })
 
    return (
-      <section
-         ref={ref}
-         className={clsx('mx-auto flex max-w-[1200px] flex-col items-center', 'px-8 md:px-10', 'w-full')}
-         style={{ height: 200 * DATA.length + 'svh' }}
-      >
-         <div className="sticky top-0 flex min-h-[100svh] w-full flex-col justify-center gap-3 break-keep py-8">
-            <AnimatePresence mode="wait">
-               {step >= 0 && <Title key={step} />}
+      <section className={clsx('mx-auto w-full max-w-[1200px]', 'px-8 md:px-10')}>
+         {/* ── 모바일: 정적 리스트 ── */}
+         <div className="flex flex-col gap-14 py-8 break-keep md:hidden">
+            <div className="flex items-center gap-4">
+               <span className="shrink-0 font-mono text-xs tracking-[0.3em] text-zinc-500 uppercase">
+                  PROJECTS
+               </span>
+               <div className="h-px flex-1 bg-zinc-800" />
+            </div>
+            {DATA.map((value) => (
+               <MotionDiv
+                  key={value.title}
+                  viewport={{
+                     margin: '-20%',
+                     once: true,
+                  }}
+                  whileInView={'view'}
+                  initial="init"
+                  className="flex w-full flex-col gap-4"
+               >
+                  <ProjectCard value={value} />
+               </MotionDiv>
+            ))}
+         </div>
 
-               {DATA.map(
-                  (value, dataIdx) =>
-                     dataIdx === step && (
-                        <MotionDiv
-                           key={value.title}
-                           className="flex w-full flex-col gap-4"
-                           initial="init"
-                           animate="view"
-                           exit="exit"
-                        >
-                           {/* Image */}
-                           <MotionDiv variants={CHILD_VARIANTS} transition={{ duration: 0.5 }}>
-                              <Link
-                                 href={value.href}
-                                 target="_blank"
-                                 className="block w-full overflow-hidden duration-300 md:hover:opacity-90"
-                              >
-                                 <ImageSlider images={value.src} alt={value.href} />
-                              </Link>
-                           </MotionDiv>
+         {/* ── 데스크탑: sticky scroll ── */}
+         <div ref={ref} className="hidden md:block" style={{ height: 200 * DATA.length + 'svh' }}>
+            <div className="sticky top-0 flex min-h-[100svh] w-full flex-col justify-center gap-3 break-keep">
+               <AnimatePresence mode="wait">
+                  {step >= 0 && <Title key={step} />}
 
-                           {/* Info row */}
+                  {DATA.map(
+                     (value, dataIdx) =>
+                        dataIdx === step && (
                            <MotionDiv
-                              variants={CHILD_VARIANTS}
-                              transition={{ duration: 0.4, delay: 0.15 }}
-                              className="border-t border-zinc-800 pt-4"
+                              key={value.title}
+                              className="flex w-full flex-col gap-4"
+                              initial="init"
+                              animate="view"
+                              exit="exit"
                            >
-                              <div className="flex flex-col gap-4 md:flex-row md:items-start md:gap-10">
-                                 {/* Title & date */}
-                                 <div className="shrink-0">
-                                    <span className="block font-mono text-xs tracking-widest text-zinc-600 mb-1">
-                                       {value.date}
-                                    </span>
-                                    <h2 className="text-xl font-bold leading-tight text-white md:text-2xl">
-                                       {value.title}
-                                    </h2>
-                                 </div>
-
-                                 {/* Description */}
-                                 <p className="flex-1 text-sm leading-relaxed text-zinc-400 break-keep">
-                                    {value.desc}
-                                 </p>
-
-                                 {/* Stack badges */}
-                                 <div className="flex flex-wrap gap-1.5 md:flex-col md:items-end md:gap-1.5">
-                                    {value.stack.map((s) => (
-                                       <span
-                                          key={s}
-                                          className="border border-zinc-700 px-2 py-0.5 font-mono text-xs text-zinc-500"
-                                       >
-                                          {s}
-                                       </span>
-                                    ))}
-                                 </div>
-                              </div>
+                              <ProjectCard key={value.title} value={value} />,
                            </MotionDiv>
-
-                           {/* Details grid */}
-                           <div className="grid grid-cols-1 gap-4 md:grid-cols-2">
-                              {value.children.map((child, idx) => (
-                                 <MotionDiv
-                                    key={`${value.title}-child-${idx}`}
-                                    variants={CHILD_VARIANTS}
-                                    transition={{ delay: 0.25 + idx * 0.1, duration: 0.4 }}
-                                    className="flex flex-col gap-2 border-l border-zinc-800 pl-4"
-                                 >
-                                    {child.map((text) => (
-                                       <p
-                                          key={text}
-                                          className="text-xs leading-relaxed text-zinc-500 md:text-sm"
-                                       >
-                                          {text}
-                                       </p>
-                                    ))}
-                                 </MotionDiv>
-                              ))}
-                           </div>
-                        </MotionDiv>
-                     ),
-               )}
-            </AnimatePresence>
+                        ),
+                  )}
+               </AnimatePresence>
+            </div>
          </div>
       </section>
    )

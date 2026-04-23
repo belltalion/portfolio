@@ -10,8 +10,7 @@ const CONTENTS = [
    },
    {
       title: 'FrontEnd',
-      content:
-         'Next / React / Vite / Ts / Js\nFramer Motion / React Hook Form\nReact Query / i18n',
+      content: 'Next / React / Vite / Ts / Js\nFramer Motion / React Hook Form\nReact Query / i18n',
    },
    {
       title: 'BackEnd',
@@ -19,8 +18,7 @@ const CONTENTS = [
    },
    {
       title: 'Global Architecture Lead',
-      content:
-         'Next.js 기반 i18n 다국어 시스템\n구축 및 다양한 글로벌 프로덕트의 기술 고도화 주도',
+      content: 'Next.js 기반 i18n 다국어 시스템\n구축 및 다양한 글로벌 프로덕트의 기술 고도화 주도',
    },
    {
       title: 'OSS Validator & Contributor',
@@ -88,7 +86,7 @@ export function SectionOne() {
             {/* Captions */}
             <div className="flex flex-col gap-2.5">
                {CAPTIONS.map((v, idx) => (
-                  <TiltCard key={'caption' + idx} className="p-0.5 w-fit">
+                  <TiltCard key={'caption' + idx} className="w-fit p-0.5">
                      <MotionText
                         transition={{
                            delay: 1.5 + idx * 0.1,
@@ -109,7 +107,7 @@ export function SectionOne() {
 
          {/* Right: Skills & Info */}
          <MotionDiv
-            className="flex h-screen flex-col gap-5 md:h-fit md:gap-5 md:max-w-[400px]"
+            className="flex h-screen flex-col gap-5 md:h-fit md:max-w-[400px] md:gap-5"
             viewport={{ once: true }}
             initial="init"
             whileInView="view"
@@ -139,7 +137,7 @@ export function SectionOne() {
                      <p className="font-mono text-xs tracking-widest text-zinc-600 uppercase">
                         {title}
                      </p>
-                     <p className="whitespace-pre-wrap text-sm font-medium leading-relaxed text-zinc-200 break-keep">
+                     <p className="text-sm leading-relaxed font-medium break-keep whitespace-pre-wrap text-zinc-200">
                         {content}
                      </p>
                   </TiltCard>
