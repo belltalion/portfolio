@@ -5,46 +5,29 @@ export function Title() {
       <MotionDiv
          initial="init"
          animate="view"
-         className="w-[100%] items-center gap-2 overflow-hidden"
+         className="flex w-full items-center gap-4 overflow-hidden"
          exit="exit"
       >
          <MotionText
-            className="text-2xl font-bold text-white"
-            transition={{
-               ease: 'easeOut',
-               duration: 0.4,
-            }}
+            className="shrink-0 font-mono text-xs tracking-[0.3em] text-zinc-500 uppercase"
+            transition={{ ease: 'easeOut', duration: 0.4 }}
             variants={{
-               init: {
-                  y: '100%',
-               },
-               view: {
-                  y: '0',
-               },
-               exit: {
-                  y: '100%',
-               },
+               init: { y: '100%' },
+               view: { y: '0' },
+               exit: { y: '100%' },
             }}
          >
             PROJECTS
          </MotionText>
          <MotionDiv
-            transition={{
-               duration: 0.4,
-               ease: 'easeOut',
-            }}
+            transition={{ duration: 0.5, ease: 'easeOut' }}
             variants={{
-               init: {
-                  scaleX: 0,
-               },
-               view: {
-                  scaleX: 1,
-               },
-               exit: {
-                  scaleX: 0,
-               },
+               init: { scaleX: 0 },
+               view: { scaleX: 1 },
+               exit: { scaleX: 0 },
             }}
-            className="h-[1px] flex-1 bg-zinc-500"
+            style={{ originX: 0 }}
+            className="h-px flex-1 bg-zinc-800"
          />
       </MotionDiv>
    )
