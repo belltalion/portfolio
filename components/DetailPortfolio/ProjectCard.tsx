@@ -1,6 +1,6 @@
 import Link from 'next/link'
-import { ImageSlider } from '../Motion/ImageSlider'
 import { MotionDiv } from '../Motion'
+import { ImageSlider } from '../Motion/ImageSlider'
 
 const CHILD_VARIANTS = {
    init: { y: 12, opacity: 0, filter: 'blur(8px)' },
@@ -23,11 +23,16 @@ export function ProjectCard({
 }) {
    return (
       <>
-         <MotionDiv variants={CHILD_VARIANTS} transition={{ duration: 0.5 }}>
+         <MotionDiv
+            variants={CHILD_VARIANTS}
+            transition={{ duration: 0.5 }}
+            className="flex w-full justify-center"
+         >
             <Link
                href={value.href}
                target="_blank"
-               className="block w-full overflow-hidden duration-300 md:h-[40%] md:hover:opacity-90"
+               // 핵심: md 이상에서 높이를 제한하고, aspect-video로 너비를 강제합니다.
+               className="relative block aspect-video w-full overflow-hidden duration-300 md:h-[35vh] md:w-auto lg:h-[45vh] xl:h-[50vh]"
             >
                <ImageSlider images={value.src} alt={value.href} />
             </Link>
@@ -36,25 +41,27 @@ export function ProjectCard({
          <MotionDiv
             variants={CHILD_VARIANTS}
             transition={{ duration: 0.4, delay: 0.15 }}
-            className="py-1 md:min-h-[100px] md:border-t md:border-zinc-500 md:py-2 xl:py-4"
+            // padding과 간격을 미세하게 조정하여 공간 확보
+            className="py-1 md:min-h-[80px] md:border-t md:border-zinc-500 md:py-2 xl:py-4"
          >
-            <div className="flex flex-col gap-3 md:flex-row md:items-start md:gap-10">
-               <div className="flex-col md:flex-row">
-                  <span className="block font-mono text-xs tracking-widest text-zinc-300 md:text-base">
+            <div className="flex flex-col gap-2 md:flex-row md:items-start md:gap-8">
+               <div className="flex-shrink-0 flex-col md:flex-row">
+                  <span className="block font-mono text-[10px] tracking-widest text-zinc-300 md:text-sm">
                      {value.date}
                   </span>
-                  <h2 className="text-xl leading-tight font-bold text-white md:text-3xl">
+                  <h2 className="text-lg leading-tight font-bold text-white md:text-2xl lg:text-3xl">
                      {value.title}
                   </h2>
                </div>
-               <p className="text-sm leading-relaxed break-keep text-zinc-200 md:flex-1 md:text-lg">
+               <p className="text-xs leading-relaxed break-keep text-zinc-200 md:flex-1 md:text-sm lg:text-base">
                   {value.desc}
                </p>
-               <div className="md flex flex-wrap gap-1.5 md:w-[200px] md:items-end">
+               {/* 스택 부분도 화면이 작을 땐 컴팩트하게 */}
+               <div className="flex flex-wrap gap-1 md:w-[150px] md:items-end lg:w-[200px]">
                   {value.stack.map((s) => (
                      <span
                         key={s}
-                        className="border border-zinc-700 px-2 py-0.5 font-mono text-xs text-zinc-200 md:text-base"
+                        className="border border-zinc-700 px-1.5 py-0.5 font-mono text-[10px] text-zinc-200 md:text-sm"
                      >
                         {s}
                      </span>
@@ -63,18 +70,19 @@ export function ProjectCard({
             </div>
          </MotionDiv>
 
-         <div className="grid grid-cols-1 gap-5 md:gap-2 lg:gap-4">
+         {/* 상세 설명 리스트 간격 조정 */}
+         <div className="grid grid-cols-1 gap-2 md:gap-1 lg:gap-3">
             {value.children.map((child, idx) => (
                <MotionDiv
                   key={`${value.title}-child-${idx}`}
                   variants={CHILD_VARIANTS}
                   transition={{ delay: 0.25 + idx * 0.1, duration: 0.4 }}
-                  className="flex flex-col divide-y divide-zinc-700/80 border-l border-zinc-700 pl-4"
+                  className="flex flex-col divide-y divide-zinc-700/80 border-l border-zinc-700 pl-3"
                >
                   {child.map((text) => (
                      <p
                         key={text}
-                        className="py-2.5 text-xs leading-[1.75] text-zinc-200 first:pt-0 last:pb-0 md:py-1 md:text-base lg:py-2.5"
+                        className="py-1.5 text-xs leading-snug text-zinc-200 first:pt-0 last:pb-0 md:py-0.5 md:text-xs lg:py-1.5 lg:text-base"
                      >
                         {text}
                      </p>

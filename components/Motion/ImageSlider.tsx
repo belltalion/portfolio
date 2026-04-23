@@ -18,18 +18,14 @@ export function ImageSlider({ images, alt }: { images: string[]; alt: string }) 
    }, [images])
 
    return (
-      <div
-         className="relative w-full overflow-hidden"
-         style={{
-            aspectRatio: '16/9',
-         }}
-      >
-         <AnimatePresence>
+      <div className="relative h-full w-full overflow-hidden">
+         {/* aspect-ratio는 부모인 Link에서 이미 잡았으므로 여기서는 h-full w-full만 있으면 됩니다 */}
+         <AnimatePresence mode="wait">
             <MotionImg
                key={images[index]}
                src={images[index]}
                alt={alt}
-               className="absolute inset-0 h-full w-full object-cover"
+               className="absolute inset-0 h-full w-full object-contain"
                initial={{ opacity: 0 }}
                animate={{ opacity: 1 }}
                exit={{ opacity: 0 }}

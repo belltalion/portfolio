@@ -25,7 +25,7 @@ const DATA = [
          ],
          [
             'PostgreSQL 기반 26개 테이블 스키마 설계, B2C 뿐 아닌 B2B 위한 선물 시스템 DB 설계, 동반 작가, 추천사, 프로젝트-주제 연결 등 N:N 관계 설계',
-            'HTTP 요청이 끊겨도 API서버 백그라운드 내에서 AI 작업이 계속 진행될 수 있도록 tracing, traing-subscriber 적용',
+            'HTTP 요청이 끊겨도 API서버 백그라운드 내에서 AI 작업이 계속 진행될 수 있도록 tokio spawn 적용',
             'Kakao·Naver·Google·Apple OAuth 및 JWT 인증 구현, 토스페이먼츠 결제 연동 및 환불 처리 구현, AWS S3 파일 업로드 처리',
             'Firebase 통해 모바일 기기 푸시 알림 연동, 사용자 중심 UI/UX/CX 설계, AI 프롬프트 응답 대기 CX를 Suspense·pending 으로 처리',
          ],
@@ -98,27 +98,29 @@ export function SectionLaon() {
    return (
       <section className={clsx('mx-auto w-full max-w-[1200px]', 'px-8 md:px-10')}>
          {/* ── 모바일: 정적 리스트 ── */}
-         <div className="flex flex-col gap-14 py-8 break-keep md:hidden">
+         <div className="flex flex-col gap-2 py-8 break-keep md:hidden">
             <div className="flex items-center gap-4">
                <span className="shrink-0 font-mono text-xs tracking-[0.3em] text-zinc-200 uppercase">
                   PROJECTS
                </span>
                <div className="h-px flex-1 bg-zinc-200" />
             </div>
-            {DATA.map((value) => (
-               <MotionDiv
-                  key={value.title}
-                  viewport={{
-                     margin: '-20%',
-                     once: true,
-                  }}
-                  whileInView={'view'}
-                  initial="init"
-                  className="flex w-full flex-col gap-4"
-               >
-                  <ProjectCard value={value} />
-               </MotionDiv>
-            ))}
+            <div className="flex flex-col gap-10">
+               {DATA.map((value) => (
+                  <MotionDiv
+                     key={value.title}
+                     viewport={{
+                        margin: '-20%',
+                        once: true,
+                     }}
+                     whileInView={'view'}
+                     initial="init"
+                     className="flex w-full flex-col gap-4"
+                  >
+                     <ProjectCard value={value} />
+                  </MotionDiv>
+               ))}
+            </div>
          </div>
 
          {/* ── 데스크탑: sticky scroll ── */}
