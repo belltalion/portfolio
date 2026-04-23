@@ -74,9 +74,9 @@ export function TiltCard({
                ...style,
             }}
             className={clsx(
-               'w-fit outline-zinc-600',
-               'transition-shadow duration-300 md:hover:border-1 md:hover:border-zinc-500',
-               pressed && 'border-1 border-zinc-500',
+               'w-fit outline-zinc-300',
+               'transition-shadow duration-300 md:hover:border-1 md:hover:border-zinc-200',
+               pressed && 'border-1 border-zinc-200',
                className,
             )}
          >

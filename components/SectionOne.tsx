@@ -1,7 +1,6 @@
 import { clsx } from 'clsx'
 import { MotionDiv, MotionText } from './Motion'
 import { TypeText } from './Motion/TypeText'
-import { TiltCard } from './Motion/TiltCard'
 
 const CONTENTS = [
    {
@@ -10,11 +9,11 @@ const CONTENTS = [
    },
    {
       title: 'FrontEnd',
-      content: 'Next / React / Vite / Ts / Js\nFramer Motion / React Hook Form\nReact Query / i18n',
+      stack: ['Next', 'React', 'Vite', 'Ts', 'Js', 'Framer Motion', 'React Hook Form'],
    },
    {
       title: 'BackEnd',
-      content: 'Fast Api / Python / Axum / Rust',
+      stack: ['Fast Api', 'Python', 'Axum', 'Rust'],
    },
    {
       title: 'Global Architecture Lead',
@@ -41,38 +40,34 @@ export function SectionOne() {
       >
          {/* Left: Name & Identity */}
          <div className="z-10 flex h-screen flex-col justify-center gap-6 md:h-fit md:min-w-[280px]">
-            <TiltCard className="w-fit p-2">
-               <div className="overflow-hidden">
-                  <MotionDiv
-                     initial={{ y: '100%' }}
-                     transition={{ delay: 1, duration: 0.4, ease: 'easeOut' }}
-                     animate={{ y: 0 }}
-                     className="flex items-center gap-1.5 font-mono text-xs text-zinc-500"
-                  >
-                     <MotionText
-                        transition={{ duration: 0.8, repeat: Infinity }}
-                        animate={{ opacity: [1, 0] }}
-                        className="text-blue-500"
-                     >
-                        ▍
-                     </MotionText>
-                     Full-stack Lead to Frontend focused
-                  </MotionDiv>
-               </div>
-            </TiltCard>
-
-            <TiltCard>
-               <span
-                  className={clsx(
-                     'leading-[0.9] font-bold tracking-tighter text-white',
-                     'text-6xl md:text-7xl lg:text-8xl',
-                  )}
+            <div className="overflow-hidden p-2">
+               <MotionDiv
+                  initial={{ y: '200%' }}
+                  transition={{ delay: 1, duration: 0.4, ease: 'easeOut' }}
+                  animate={{ y: '0' }}
+                  className="flex items-center gap-1.5 font-mono text-xs text-zinc-200 md:text-sm"
                >
-                  <TypeText text="LEE" />
-                  <br />
-                  <TypeText delay={0.3} text="TAEHYEON" />
-               </span>
-            </TiltCard>
+                  <MotionText
+                     transition={{ duration: 0.8, repeat: Infinity }}
+                     animate={{ opacity: [1, 0] }}
+                     className="text-blue-500"
+                  >
+                     ▍
+                  </MotionText>
+                  Full-stack Lead to Frontend focused
+               </MotionDiv>
+            </div>
+
+            <span
+               className={clsx(
+                  'leading-[0.9] font-bold tracking-tighter text-white',
+                  'text-6xl md:text-7xl lg:text-8xl',
+               )}
+            >
+               <TypeText text="LEE" />
+               <br />
+               <TypeText delay={0.3} text="TAEHYEON" />
+            </span>
 
             {/* Thin separator */}
             <MotionDiv
@@ -80,27 +75,26 @@ export function SectionOne() {
                animate={{ scaleX: 1, opacity: 1 }}
                transition={{ delay: 1.4, duration: 0.5, ease: 'easeOut' }}
                style={{ originX: 0 }}
-               className="h-px w-full bg-zinc-800"
+               className="h-px w-full bg-zinc-200"
             />
 
             {/* Captions */}
             <div className="flex flex-col gap-2.5">
                {CAPTIONS.map((v, idx) => (
-                  <TiltCard key={'caption' + idx} className="w-fit p-0.5">
-                     <MotionText
-                        transition={{
-                           delay: 1.5 + idx * 0.1,
-                           duration: 0.5,
-                           ease: 'easeOut',
-                        }}
-                        initial={{ y: 8, opacity: 0, filter: 'blur(6px)' }}
-                        animate={{ y: 0, opacity: 1, filter: 'blur(0)' }}
-                        className="flex items-center gap-3 text-xs text-zinc-500 md:text-sm"
-                     >
-                        <span className="font-mono text-zinc-700">0{idx + 1}</span>
-                        {v}
-                     </MotionText>
-                  </TiltCard>
+                  <MotionText
+                     key={'caption' + idx}
+                     transition={{
+                        delay: 1.5 + idx * 0.1,
+                        duration: 0.5,
+                        ease: 'easeOut',
+                     }}
+                     initial={{ y: 8, opacity: 0, filter: 'blur(6px)' }}
+                     animate={{ y: 0, opacity: 1, filter: 'blur(0)' }}
+                     className="flex items-center gap-3 p-0.5 text-xs text-zinc-200 md:text-base"
+                  >
+                     <span className="font-mono text-zinc-700">0{idx + 1}</span>
+                     {v}
+                  </MotionText>
                ))}
             </div>
          </div>
@@ -112,7 +106,7 @@ export function SectionOne() {
             initial="init"
             whileInView="view"
          >
-            {CONTENTS.map(({ title, content }, idx) => (
+            {CONTENTS.map(({ title, content, stack }, idx) => (
                <MotionDiv
                   variants={{
                      init: {
@@ -133,14 +127,27 @@ export function SectionOne() {
                   }}
                   key={'item-' + idx}
                >
-                  <TiltCard className="flex flex-col gap-2 border-l border-zinc-700 py-1 pl-4">
-                     <p className="font-mono text-xs tracking-widest text-zinc-600 uppercase">
+                  <div className="flex flex-col gap-2 border-l border-zinc-700 py-1 pl-4">
+                     <p className="font-mono text-xs tracking-widest text-zinc-400 uppercase md:text-base">
                         {title}
                      </p>
-                     <p className="text-sm leading-relaxed font-medium break-keep whitespace-pre-wrap text-zinc-200">
-                        {content}
-                     </p>
-                  </TiltCard>
+                     {stack ? (
+                        <div className="flex flex-wrap gap-1.5">
+                           {stack.map((value) => (
+                              <span
+                                 key={value}
+                                 className="border border-zinc-700 px-2 py-0.5 font-mono text-xs text-zinc-200 md:text-sm"
+                              >
+                                 {value}
+                              </span>
+                           ))}
+                        </div>
+                     ) : (
+                        <p className="text-sm leading-relaxed font-medium break-keep whitespace-pre-wrap text-zinc-200 md:text-base">
+                           {content}
+                        </p>
+                     )}
+                  </div>
                </MotionDiv>
             ))}
          </MotionDiv>

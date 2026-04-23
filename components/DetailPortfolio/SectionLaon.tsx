@@ -100,10 +100,10 @@ export function SectionLaon() {
          {/* ── 모바일: 정적 리스트 ── */}
          <div className="flex flex-col gap-14 py-8 break-keep md:hidden">
             <div className="flex items-center gap-4">
-               <span className="shrink-0 font-mono text-xs tracking-[0.3em] text-zinc-500 uppercase">
+               <span className="shrink-0 font-mono text-xs tracking-[0.3em] text-zinc-200 uppercase">
                   PROJECTS
                </span>
-               <div className="h-px flex-1 bg-zinc-800" />
+               <div className="h-px flex-1 bg-zinc-200" />
             </div>
             {DATA.map((value) => (
                <MotionDiv
@@ -123,7 +123,7 @@ export function SectionLaon() {
 
          {/* ── 데스크탑: sticky scroll ── */}
          <div ref={ref} className="hidden md:block" style={{ height: 200 * DATA.length + 'svh' }}>
-            <div className="sticky top-0 flex min-h-[100svh] w-full flex-col justify-center gap-3 break-keep">
+            <div className="sticky top-0 flex min-h-[100svh] w-full flex-col justify-center break-keep">
                <AnimatePresence mode="wait">
                   {step >= 0 && <Title key={step} />}
 
@@ -132,7 +132,7 @@ export function SectionLaon() {
                         dataIdx === step && (
                            <MotionDiv
                               key={value.title}
-                              className="flex w-full flex-col gap-4"
+                              className="flex w-full flex-col gap-4 md:gap-2 lg:gap-4"
                               initial="init"
                               animate="view"
                               exit="exit"
