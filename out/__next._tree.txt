@@ -1,8 +1,8 @@
-:HL["/portfolio/_next/static/chunks/14gix5zivdt9x.css","style"]
+:HL["/portfolio/_next/static/chunks/0s7e5g3pihfyo.css","style"]
 :HL["/portfolio/images/laon_swingcraft_1.webp","image"]
 :HL["/portfolio/images/laon_swingcraft_2.webp","image"]
 :HL["/portfolio/images/laon_swingcraft_3.webp","image"]
 :HL["/portfolioimages/devfive_1.webp","image"]
 :HL["/portfolioimages/devfive_2.webp","image"]
 :HL["/portfolioimages/devfive_3.webp","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}},"staleTime":300,"buildId":"hr50Yk_JC0fY_h8AXN8s7"}
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}},"staleTime":300,"buildId":"ZeRsvwpUHCVb0o80uIIUw"}

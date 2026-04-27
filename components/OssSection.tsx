@@ -73,11 +73,11 @@ export function OssSection() {
                   lineClassName="bg-zinc-200"
                   useViewport
                />
-               <p className="break-keep font-mono text-xs leading-relaxed text-zinc-500 md:text-sm">
+               <p className="break-keep font-mono text-xs leading-relaxed text-zinc-400 md:text-sm">
                   사내 오픈소스의 실서비스 도입을 통한{' '}
-                  <span className="text-zinc-400">Edge Case 발굴 및 안정성 확보</span>, 개발자
+                  <span className="text-zinc-200">Edge Case 발굴 및 안정성 확보</span>, 개발자
                   경험(DX) 개선을 위한{' '}
-                  <span className="text-zinc-400">
+                  <span className="text-zinc-200">
                      기획 피드백 및 API 인터페이스 의사 결정 참여
                   </span>
                </p>
@@ -114,13 +114,13 @@ export function OssSection() {
                            <h3 className="font-mono text-lg font-bold text-emerald-400 transition-colors duration-300 group-hover:text-emerald-300 md:text-xl lg:text-2xl">
                               {project.name}
                            </h3>
-                           <p className="text-sm leading-snug break-keep text-zinc-300 md:text-base lg:text-lg">
+                           <p className="break-keep text-sm leading-snug text-zinc-200 md:text-base lg:text-lg">
                               {project.tagline}
                            </p>
                         </div>
 
                         {/* Description */}
-                        <p className="flex-1 break-keep text-xs leading-relaxed text-zinc-300 md:text-sm">
+                        <p className="flex-1 break-keep text-xs leading-relaxed text-zinc-200 md:text-sm">
                            {project.description}
                         </p>
 
@@ -131,14 +131,14 @@ export function OssSection() {
                                  Early Adopter &amp; Validator
                               </span>
                               {project.contribution && (
-                                 <span className="border border-zinc-700 px-2.5 py-0.5 font-mono text-[10px] text-zinc-300 md:text-xs">
+                                 <span className="border border-zinc-700 px-2.5 py-0.5 font-mono text-[10px] text-zinc-200 md:text-xs">
                                     {project.contribution}
                                  </span>
                               )}
                               {project.lang.map((l) => (
                                  <span
                                     key={l}
-                                    className="bg-zinc-800 px-2.5 py-0.5 font-mono text-[10px] text-zinc-300 md:text-xs"
+                                    className="bg-zinc-800 px-2.5 py-0.5 font-mono text-[10px] text-zinc-200 md:text-xs"
                                  >
                                     {l}
                                  </span>

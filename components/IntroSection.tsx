@@ -79,7 +79,7 @@ export function IntroSection() {
             >
                <Link
                   href="mailto:xogus4026@gmail.com"
-                  className="font-mono text-xs text-zinc-500 transition-colors duration-200 hover:text-white md:text-sm"
+                  className="font-mono text-xs text-zinc-400 transition-colors duration-200 hover:text-white md:text-sm"
                >
                   xogus4026@gmail.com
                </Link>
@@ -88,7 +88,7 @@ export function IntroSection() {
                   href="https://github.com/belltalion"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-mono text-xs text-zinc-500 transition-colors duration-200 hover:text-white md:text-sm"
+                  className="font-mono text-xs text-zinc-400 transition-colors duration-200 hover:text-white md:text-sm"
                >
                   github/belltalion
                </Link>

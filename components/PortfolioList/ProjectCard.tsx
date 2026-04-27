@@ -62,7 +62,7 @@ export function ProjectCard({ title, link, date, image, tech, role, className }:
 
          <div className="mt-auto flex flex-wrap items-center gap-1.5 pt-1">
             {role && (
-               <span className="border border-zinc-600 px-2.5 py-0.5 font-mono text-[10px] text-zinc-300 md:text-xs">
+               <span className="border border-zinc-700 px-2.5 py-0.5 font-mono text-[10px] text-zinc-200 md:text-xs">
                   {role}
                </span>
             )}
@@ -70,7 +70,7 @@ export function ProjectCard({ title, link, date, image, tech, role, className }:
                tech.map((t) => (
                   <span
                      key={t}
-                     className="bg-zinc-700 px-2.5 py-0.5 font-mono text-[10px] text-zinc-200 md:text-xs"
+                     className="bg-zinc-800 px-2.5 py-0.5 font-mono text-[10px] text-zinc-200 md:text-xs"
                   >
                      {t}
                   </span>

@@ -60,7 +60,7 @@ export function ProjectDetail({
          >
             <div className="flex flex-col gap-2 md:flex-row md:items-start md:gap-8">
                <div className="flex-shrink-0 flex-col md:flex-row">
-                  <span className="block font-mono text-[10px] tracking-widest text-zinc-300 md:text-sm">
+                  <span className="block font-mono text-[10px] tracking-widest text-zinc-400 md:text-sm">
                      {value.date}
                   </span>
                   <h2 className="text-lg leading-tight font-bold text-white md:text-2xl lg:text-3xl">
