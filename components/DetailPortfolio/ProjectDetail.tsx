@@ -31,9 +31,24 @@ export function ProjectDetail({
             <Link
                href={value.href}
                target="_blank"
-               className="relative block aspect-video w-full overflow-hidden duration-300 md:h-[35vh] md:w-auto lg:h-[40vh] xl:h-[50vh]"
+               className="group relative block aspect-video w-full overflow-hidden md:h-[35vh] md:w-auto lg:h-[40vh] xl:h-[50vh]"
             >
                <ImageSlider images={value.src} alt={value.href} />
+
+               {/* 호버 오버레이 */}
+               <div className="pointer-events-none absolute inset-0 flex flex-col justify-end bg-gradient-to-t from-black/70 via-black/20 to-transparent p-5 opacity-0 transition-opacity duration-500 group-hover:opacity-100">
+                  <div className="flex items-end justify-between">
+                     <span className="translate-y-3 font-mono text-xs tracking-[0.25em] text-white/90 uppercase transition-transform duration-500 ease-out group-hover:translate-y-0 md:text-sm">
+                        Visit Site
+                     </span>
+                     <span className="translate-x-2 translate-y-2 font-mono text-2xl text-white/80 transition-transform duration-500 ease-out group-hover:translate-x-0 group-hover:translate-y-0 md:text-3xl">
+                        ↗
+                     </span>
+                  </div>
+               </div>
+
+               {/* 테두리 인셋 */}
+               <div className="pointer-events-none absolute inset-0 ring-1 ring-white/0 transition-all duration-500 ring-inset group-hover:ring-white/20" />
             </Link>
          </MotionDiv>
 
@@ -76,7 +91,7 @@ export function ProjectDetail({
                   key={`${value.title}-child-${idx}`}
                   variants={CHILD_VARIANTS}
                   transition={{ delay: 0.25 + idx * 0.1, duration: 0.4 }}
-                  className="flex flex-col divide-y divide-zinc-700/80 border-l border-zinc-700 pl-3"
+                  className="flex flex-col divide-y divide-zinc-700/50 border-l border-blue-500/30 pl-3"
                >
                   {child.map((text) => (
                      <p

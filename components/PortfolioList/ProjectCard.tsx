@@ -9,7 +9,9 @@ interface ProjectCardProps {
    link?: string
    date: string
    image?: string
-   index: number
+   tech?: string[]
+   role?: string
+   className?: string
 }
 
 const VARIANTS = {
@@ -17,56 +19,73 @@ const VARIANTS = {
    view: { y: 0, opacity: 1, filter: 'blur(0px)' },
 }
 
-export function ProjectCard({ title, link, date, image, index }: ProjectCardProps) {
+export function ProjectCard({ title, link, date, image, tech, role, className }: ProjectCardProps) {
+   const [projectName, ...subtitleParts] = title.split(' — ')
+   const subtitle = subtitleParts.join(' — ')
+
    const Content = (
       <div
          className={clsx(
-            'group relative flex flex-col gap-2 border-l border-zinc-700 py-4 pl-6 transition-colors duration-300',
-            link ? 'hover:border-blue-500' : 'cursor-default',
+            'group relative flex flex-col gap-3 border border-zinc-800 bg-zinc-900/50 p-5 transition-all duration-300',
+            link ? 'hover:border-zinc-700 hover:bg-zinc-900' : 'cursor-default',
          )}
       >
          {image && (
-            <MotionDiv
-               variants={VARIANTS}
-               transition={{ duration: 0.5 }}
-               className="mb-4 overflow-hidden rounded-md"
-            >
-               <MotionImg src={image} alt={title} className="h-auto w-full object-cover" />
-            </MotionDiv>
+            <div className="overflow-hidden">
+               <MotionImg
+                  src={image}
+                  alt={title}
+                  className={clsx(
+                     'h-40 w-full object-cover object-top transition-transform duration-500',
+                     link ? 'group-hover:scale-105' : '',
+                  )}
+               />
+            </div>
          )}
-         <div className="flex flex-col gap-1 md:flex-row md:items-baseline md:justify-between">
+
+         <div className="flex flex-col gap-1.5">
             <h3
                className={clsx(
-                  'text-lg font-bold text-white transition-colors duration-300 md:text-xl',
-                  link && 'group-hover:text-blue-500',
+                  'text-base leading-snug font-bold text-white transition-colors duration-300 md:text-lg lg:text-xl',
+                  link && 'group-hover:text-blue-400',
                )}
             >
-               {title}
+               {projectName}
             </h3>
-            <span className="font-mono text-xs tracking-widest text-zinc-400 md:text-sm">
+            <span className="shrink-0 font-mono text-[10px] tracking-widest text-zinc-400 md:text-xs lg:text-[13px]">
                {date}
             </span>
+            {subtitle && (
+               <p className="text-xs leading-relaxed text-zinc-400 md:text-sm">{subtitle}</p>
+            )}
          </div>
-         {link && (
-            <span className="font-mono text-[10px] text-zinc-500 transition-colors duration-300 group-hover:text-zinc-300">
-               {link.replace(/^https?:\/\//, '')}
-            </span>
-         )}
+
+         <div className="mt-auto flex flex-wrap items-center gap-1.5 pt-1">
+            {role && (
+               <span className="border border-zinc-600 px-2.5 py-0.5 font-mono text-[10px] text-zinc-300 md:text-xs">
+                  {role}
+               </span>
+            )}
+            {tech &&
+               tech.map((t) => (
+                  <span
+                     key={t}
+                     className="bg-zinc-700 px-2.5 py-0.5 font-mono text-[10px] text-zinc-200 md:text-xs"
+                  >
+                     {t}
+                  </span>
+               ))}
+            {link && (
+               <span className="ml-auto font-mono text-[10px] text-zinc-400 transition-colors duration-300 group-hover:text-zinc-200 md:text-xs">
+                  {link.replace(/^https?:\/\//, '').split('/')[0]}
+               </span>
+            )}
+         </div>
       </div>
    )
 
    return (
-      <MotionDiv
-         variants={VARIANTS}
-         initial="init"
-         whileInView="view"
-         viewport={{ once: true, margin: '-10%' }}
-         transition={{
-            duration: 0.5,
-            delay: index * 0.1,
-            ease: 'easeOut',
-         }}
-      >
+      <MotionDiv variants={VARIANTS} transition={{ duration: 0.5, ease: 'easeOut' }} className={className}>
          {link ? (
             <Link href={link} target="_blank" rel="noopener noreferrer">
                {Content}

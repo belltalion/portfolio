@@ -1,12 +1,18 @@
 import './globals.css'
 
 export async function generateMetadata() {
-   const meta = {
-      title: {
-         // default: "이태현 포트폴리오"
+   return {
+      title: '이태현 포트폴리오',
+      openGraph: {
+         title: '이태현 포트폴리오',
+         images: [{ url: './og.png' }],
+      },
+      twitter: {
+         card: 'summary_large_image',
+         title: '이태현 포트폴리오',
+         images: ['./og.png'],
       },
    }
-   return meta
 }
 
 const PRELOAD_IMAGES = [

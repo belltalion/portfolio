@@ -65,7 +65,7 @@ export function TiltCard({
             transformStyle: 'preserve-3d',
             touchAction: 'none', // 모바일에서 터치 시 스크롤 방지 (선택 사항)
          }}
-         className={clsx('w-fit rounded-2xl from-white/20 to-white/5', motionClassName)}
+         className={clsx('w-fit from-white/20 to-white/5', motionClassName)}
       >
          <div
             style={{

@@ -96,9 +96,9 @@ export function DetailPortfolioSection() {
    })
 
    return (
-      <section className={clsx('mx-auto w-full max-w-[1200px]', 'px-8 md:px-10')}>
+      <section className={clsx('mx-auto w-full max-w-[1200px]', 'px-5 md:px-10')}>
          {/* ── 모바일: 정적 리스트 ── */}
-         <div className="flex flex-col gap-2 py-8 break-keep md:hidden">
+         <div className="flex flex-col gap-2 py-4 break-keep md:hidden">
             <div className="flex items-center gap-4">
                <span className="shrink-0 font-mono text-xs tracking-[0.3em] text-zinc-200 uppercase">
                   PROJECTS

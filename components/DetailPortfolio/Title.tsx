@@ -1,15 +1,35 @@
+import { clsx } from 'clsx'
 import { MotionDiv, MotionText } from '../Motion'
 
-export function Title() {
+interface TitleProps {
+   label?: string
+   textClassName?: string
+   lineClassName?: string
+   useViewport?: boolean
+}
+
+export function Title({
+   label = 'PROJECTS',
+   textClassName = 'text-zinc-200',
+   lineClassName = 'bg-zinc-200',
+   useViewport = false,
+}: TitleProps) {
+   const motionProps = useViewport
+      ? { whileInView: 'view' as const, viewport: { once: true } }
+      : { animate: 'view' as const }
+
    return (
       <MotionDiv
          initial="init"
-         animate="view"
-         className="flex w-full items-center gap-4 overflow-hidden"
+         {...motionProps}
          exit="exit"
+         className="flex w-full items-center gap-4 overflow-hidden"
       >
          <MotionText
-            className="shrink-0 font-mono text-xs tracking-[0.3em] text-zinc-200 uppercase md:text-lg"
+            className={clsx(
+               'shrink-0 font-mono text-xs tracking-[0.3em] uppercase md:text-lg',
+               textClassName,
+            )}
             transition={{ ease: 'easeOut', duration: 0.4 }}
             variants={{
                init: { y: '100%' },
@@ -17,7 +37,7 @@ export function Title() {
                exit: { y: '100%' },
             }}
          >
-            PROJECTS
+            {label}
          </MotionText>
          <MotionDiv
             transition={{ duration: 0.5, ease: 'easeOut' }}
@@ -27,7 +47,7 @@ export function Title() {
                exit: { scaleX: 0 },
             }}
             style={{ originX: 0 }}
-            className="h-px flex-1 bg-zinc-200"
+            className={clsx('h-px flex-1', lineClassName)}
          />
       </MotionDiv>
    )

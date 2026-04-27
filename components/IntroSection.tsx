@@ -1,4 +1,5 @@
 import { clsx } from 'clsx'
+import Link from 'next/link'
 import { MotionDiv, MotionText } from './Motion'
 import { TypeText } from './Motion/TypeText'
 
@@ -32,14 +33,14 @@ export function IntroSection() {
    return (
       <section
          className={clsx(
-            'flex flex-col items-center overflow-hidden',
+            'relative flex flex-col items-center overflow-hidden',
             'md:h-screen md:flex-row md:justify-between',
-            'mx-auto w-full max-w-[1200px] px-8 md:px-10',
+            'mx-auto w-full max-w-[1200px] px-5 py-4 md:px-10',
             'gap-10 md:gap-16',
          )}
       >
          {/* Left: Name & Identity */}
-         <div className="z-10 flex h-screen flex-col justify-center gap-6 md:h-fit md:min-w-[280px]">
+         <div className="relative z-10 flex h-screen flex-col justify-center gap-6 md:h-fit md:min-w-[280px]">
             <div className="overflow-hidden p-2">
                <MotionDiv
                   initial={{ y: '200%' }}
@@ -69,6 +70,30 @@ export function IntroSection() {
                <TypeText delay={0.3} text="TAEHYEON" />
             </span>
 
+            {/* Links */}
+            <MotionDiv
+               initial={{ opacity: 0, y: 8, filter: 'blur(6px)' }}
+               animate={{ opacity: 1, y: 0, filter: 'blur(0)' }}
+               transition={{ delay: 1.2, duration: 0.5, ease: 'easeOut' }}
+               className="flex flex-wrap items-center gap-4"
+            >
+               <Link
+                  href="mailto:xogus4026@gmail.com"
+                  className="font-mono text-xs text-zinc-500 transition-colors duration-200 hover:text-white md:text-sm"
+               >
+                  xogus4026@gmail.com
+               </Link>
+               <span className="h-3 w-px bg-zinc-700" />
+               <Link
+                  href="https://github.com/belltalion"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="font-mono text-xs text-zinc-500 transition-colors duration-200 hover:text-white md:text-sm"
+               >
+                  github/belltalion
+               </Link>
+            </MotionDiv>
+
             {/* Thin separator */}
             <MotionDiv
                initial={{ scaleX: 0, opacity: 0 }}
@@ -97,11 +122,45 @@ export function IntroSection() {
                   </MotionText>
                ))}
             </div>
+
+            {/* 모바일 스크롤 인디케이터 */}
+            <MotionDiv
+               initial={{ opacity: 0 }}
+               animate={{ opacity: 1 }}
+               transition={{ delay: 2.4, duration: 0.8 }}
+               className="absolute right-0 bottom-8 left-0 flex flex-col items-center gap-2 md:hidden"
+            >
+               <span className="font-mono text-[9px] tracking-[0.4em] text-zinc-600 uppercase">
+                  scroll
+               </span>
+               <div className="relative h-7 w-px overflow-hidden">
+                  <MotionDiv
+                     animate={{ y: ['-100%', '200%'] }}
+                     transition={{
+                        duration: 1.2,
+                        repeat: Infinity,
+                        ease: 'linear',
+                        repeatDelay: 0.4,
+                     }}
+                     className="absolute inset-x-0 top-0 h-full bg-gradient-to-b from-transparent via-zinc-500 to-transparent"
+                  />
+               </div>
+               <MotionDiv
+                  animate={{ y: [0, 4, 0] }}
+                  transition={{
+                     duration: 1.2,
+                     repeat: Infinity,
+                     ease: 'easeInOut',
+                     repeatDelay: 0.4,
+                  }}
+                  className="h-1.5 w-1.5 rotate-45 border-r border-b border-zinc-500"
+               />
+            </MotionDiv>
          </div>
 
          {/* Right: Skills & Info */}
          <MotionDiv
-            className="flex h-screen flex-col gap-5 md:h-fit md:max-w-[400px] md:gap-5"
+            className="flex h-fit flex-col gap-5 md:max-w-[400px] md:gap-5"
             viewport={{ once: true }}
             initial="init"
             whileInView="view"
@@ -150,6 +209,26 @@ export function IntroSection() {
                   </div>
                </MotionDiv>
             ))}
+         </MotionDiv>
+
+         {/* 데스크탑 스크롤 인디케이터 */}
+         <MotionDiv
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ delay: 2.4, duration: 0.8 }}
+            className="absolute bottom-8 left-1/2 hidden -translate-x-1/2 flex-col items-center gap-3 md:flex lg:gap-4"
+         >
+            <span className="text-center font-mono text-[10px] tracking-[0.4em] text-zinc-400 uppercase md:text-xs lg:text-sm">
+               scroll
+            </span>
+            <div className="relative h-8 w-px overflow-hidden md:h-10 lg:h-14">
+               <MotionDiv
+                  animate={{ y: ['-100%', '200%'] }}
+                  transition={{ duration: 1.2, repeat: Infinity, ease: 'linear', repeatDelay: 0.4 }}
+                  className="absolute inset-x-0 top-0 h-full bg-gradient-to-b from-transparent via-zinc-400 to-transparent"
+               />
+            </div>
+            <div className="h-2 w-2 rotate-45 border-r border-b border-zinc-400 md:h-2.5 md:w-2.5 lg:h-3 lg:w-3" />
          </MotionDiv>
       </section>
    )
