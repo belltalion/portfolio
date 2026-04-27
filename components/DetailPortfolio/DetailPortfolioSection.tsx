@@ -9,11 +9,7 @@ import { MotionDiv } from '../Motion'
 const DATA = [
    {
       href: 'https://girokspace.com/',
-      src: [
-         './images/laon_swingcraft_1.webp',
-         './images/laon_swingcraft_2.webp',
-         './images/laon_swingcraft_3.webp',
-      ],
+      src: ['./images/girok-space_1.webp', './images/girok-space_2.webp'],
       date: 'JAN. 2026 – MAY. 2026',
       title: '기록공간',
       desc: '주식회사 리브유의 AI 자서전 서비스 솔루션 앱 기록공간 풀스택 개발',
