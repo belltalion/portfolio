@@ -1,11 +1,13 @@
-import { SectionLaon } from '@/components/DetailPortfolio/SectionLaon'
-import { SectionOne } from '@/components/SectionOne'
+import { DetailPortfolioSection } from '@/components/DetailPortfolio/DetailPortfolioSection'
+import { IntroSection } from '@/components/IntroSection'
+import { ProjectList } from '@/components/PortfolioList/ProjectList'
 
 export default function Home() {
    return (
       <>
-         <SectionOne />
-         <SectionLaon />
+         <IntroSection />
+         <DetailPortfolioSection />
+         <ProjectList />
       </>
    )
 }

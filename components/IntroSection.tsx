@@ -28,7 +28,7 @@ const CONTENTS = [
 
 const CAPTIONS = ['Based in Anyang', 'Team Lead at DevFive', 'Computer Science B.S.']
 
-export function SectionOne() {
+export function IntroSection() {
    return (
       <section
          className={clsx(

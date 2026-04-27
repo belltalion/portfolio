@@ -8,7 +8,7 @@ const CHILD_VARIANTS = {
    exit: { y: -8, opacity: 0, filter: 'blur(6px)', transition: { delay: 0 } },
 }
 
-export function ProjectCard({
+export function ProjectDetail({
    value,
 }: {
    value: {
@@ -31,8 +31,7 @@ export function ProjectCard({
             <Link
                href={value.href}
                target="_blank"
-               // 핵심: md 이상에서 높이를 제한하고, aspect-video로 너비를 강제합니다.
-               className="relative block aspect-video w-full overflow-hidden duration-300 md:h-[35vh] md:w-auto lg:h-[45vh] xl:h-[50vh]"
+               className="relative block aspect-video w-full overflow-hidden duration-300 md:h-[35vh] md:w-auto lg:h-[40vh] xl:h-[50vh]"
             >
                <ImageSlider images={value.src} alt={value.href} />
             </Link>
@@ -57,7 +56,7 @@ export function ProjectCard({
                   {value.desc}
                </p>
                {/* 스택 부분도 화면이 작을 땐 컴팩트하게 */}
-               <div className="flex flex-wrap gap-1 md:w-[150px] md:items-end lg:w-[200px]">
+               <div className="flex flex-wrap gap-1 md:w-[150px] md:items-end lg:w-[240px]">
                   {value.stack.map((s) => (
                      <span
                         key={s}

@@ -3,7 +3,7 @@ import clsx from 'clsx'
 import { useRef, useState } from 'react'
 import { AnimatePresence, useMotionValueEvent, useScroll } from 'framer-motion'
 import { Title } from './Title'
-import { ProjectCard } from './ProjectCard'
+import { ProjectDetail } from './ProjectDetail'
 import { MotionDiv } from '../Motion'
 
 const DATA = [
@@ -72,7 +72,7 @@ const DATA = [
    },
 ]
 
-export function SectionLaon() {
+export function DetailPortfolioSection() {
    const [step, setStep] = useState(-1)
    const ref = useRef<HTMLDivElement>(null)
 
@@ -117,7 +117,7 @@ export function SectionLaon() {
                      initial="init"
                      className="flex w-full flex-col gap-4"
                   >
-                     <ProjectCard value={value} />
+                     <ProjectDetail value={value} />
                   </MotionDiv>
                ))}
             </div>
@@ -139,7 +139,7 @@ export function SectionLaon() {
                               animate="view"
                               exit="exit"
                            >
-                              <ProjectCard key={value.title} value={value} />,
+                              <ProjectDetail key={value.title} value={value} />,
                            </MotionDiv>
                         ),
                   )}
