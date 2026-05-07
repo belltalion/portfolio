@@ -5,4 +5,4 @@
 :HL["/portfolioimages/devfive_1.webp","image"]
 :HL["/portfolioimages/devfive_2.webp","image"]
 :HL["/portfolioimages/devfive_3.webp","image"]
-0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"W18g7Sac1QDWoJnZJfB5S"}
+0:{"tree":{"name":"","param":null,"prefetchHints":16,"slots":{"children":{"name":"/_not-found","param":null,"prefetchHints":0,"slots":{"children":{"name":"__PAGE__","param":null,"prefetchHints":0,"slots":null}}}}},"staleTime":300,"buildId":"ZhfI7PJK9lwM05nqCZuAa"}

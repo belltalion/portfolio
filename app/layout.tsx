@@ -1,16 +1,21 @@
 import './globals.css'
 
+const BASE_URL = 'https://belltalion.github.io/portfolio'
+
 export async function generateMetadata() {
    return {
       title: '이태현 포트폴리오',
+      icons: {
+         icon: `${BASE_URL}/favicon.svg`,
+      },
       openGraph: {
          title: '이태현 포트폴리오',
-         images: [{ url: './og.png' }],
+         images: [{ url: `${BASE_URL}/og.png` }],
       },
       twitter: {
          card: 'summary_large_image',
          title: '이태현 포트폴리오',
-         images: ['./og.png'],
+         images: [`${BASE_URL}/og.png`],
       },
    }
 }
