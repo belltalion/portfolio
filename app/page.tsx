@@ -7,9 +7,9 @@ export default function Home() {
    return (
       <>
          <IntroSection />
+         <ProjectList />
          <DetailPortfolioSection />
          <OssSection />
-         <ProjectList />
       </>
    )
 }

@@ -2,7 +2,7 @@
 
 import { clsx } from 'clsx'
 import Link from 'next/link'
-import { MotionDiv, MotionImg } from '../Motion'
+import { MotionDiv } from '../Motion'
 
 interface ProjectCardProps {
    title: string
@@ -20,9 +20,6 @@ const VARIANTS = {
 }
 
 export function ProjectCard({ title, link, date, image, tech, role, className }: ProjectCardProps) {
-   const [projectName, ...subtitleParts] = title.split(' — ')
-   const subtitle = subtitleParts.join(' — ')
-
    const Content = (
       <div
          className={clsx(
@@ -30,34 +27,24 @@ export function ProjectCard({ title, link, date, image, tech, role, className }:
             link ? 'hover:border-zinc-700 hover:bg-zinc-900' : 'cursor-default',
          )}
       >
-         {image && (
-            <div className="overflow-hidden">
-               <MotionImg
-                  src={image}
-                  alt={title}
-                  className={clsx(
-                     'h-40 w-full object-cover object-top transition-transform duration-500',
-                     link ? 'group-hover:scale-105' : '',
-                  )}
-               />
-            </div>
-         )}
-
          <div className="flex flex-col gap-1.5">
-            <h3
-               className={clsx(
-                  'text-base leading-snug font-bold text-white transition-colors duration-300 md:text-lg lg:text-xl',
-                  link && 'group-hover:text-blue-400',
-               )}
-            >
-               {projectName}
-            </h3>
-            <span className="shrink-0 font-mono text-[10px] tracking-widest text-zinc-400 md:text-xs lg:text-[13px]">
-               {date}
-            </span>
-            {subtitle && (
+            <div className="flex justify-between">
+               <h3
+                  className={clsx(
+                     'text-base leading-snug font-bold text-white transition-colors duration-300 md:text-2xl lg:text-2xl',
+                     link && 'group-hover:text-blue-400',
+                  )}
+               >
+                  {title}
+               </h3>
+               <span className="shrink-0 font-mono text-[10px] tracking-widest text-zinc-400 md:text-xs lg:text-[13px]">
+                  {date}
+               </span>
+            </div>
+
+            {/* {subtitle && (
                <p className="text-xs leading-relaxed text-zinc-400 md:text-sm">{subtitle}</p>
-            )}
+            )} */}
          </div>
 
          <div className="mt-auto flex flex-wrap items-center gap-1.5 pt-1">
@@ -85,7 +72,11 @@ export function ProjectCard({ title, link, date, image, tech, role, className }:
    )
 
    return (
-      <MotionDiv variants={VARIANTS} transition={{ duration: 0.5, ease: 'easeOut' }} className={className}>
+      <MotionDiv
+         variants={VARIANTS}
+         transition={{ duration: 0.5, ease: 'easeOut' }}
+         className={className}
+      >
          {link ? (
             <Link href={link} target="_blank" rel="noopener noreferrer">
                {Content}

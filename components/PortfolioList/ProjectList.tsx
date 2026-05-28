@@ -17,18 +17,23 @@ const LIST_VARIANTS = {
 
 const PROJECTS = [
    {
-      title: '라운드테이블 — 한국어 교육 솔루션 인앱 결제 시스템 구축',
+      title: '라운드테이블 — 외국인 한국어 교육 솔루션',
       date: '2025.09 - 2025.10',
       link: 'https://play.google.com/store/apps/details?id=com.syworks.roundtable&hl=ko',
       image: './images/roundtable.webp',
+      desc: [
+         'AI 대화형 한국어 학습 플랫폼의 AI 프롬프트 최적화 및 CMS 내 대화 주제 관리 페이지의 수정을 진행했습니다.',
+         '구글 플레이스토어, 애플 앱스토어 인앱 구독 결제를 연동하여 구독자 DB 테이블을 CMS에서 관리 가능하게 개선했습니다.',
+      ],
       role: '앱개발',
-      tech: ['Flutter'],
+      tech: ['Flutter, Dart'],
    },
    {
       title: 'NH 올원뱅크 캐시백쿠폰몰 — 미니앱 기반 프로모션 서비스 개발',
       date: '2025.04 - 2025.08',
       link: 'https://play.google.com/store/apps/details?id=com.nonghyup.nhallonebank&hl=ko',
       image: './images/nh.webp',
+      desc: [],
       role: '프론트엔드',
       tech: ['Next.js'],
    },
@@ -142,7 +147,7 @@ export function ProjectList() {
             />
 
             <MotionDiv
-               className="columns-1 gap-4 md:columns-2 lg:columns-3"
+               className="gap-4"
                variants={LIST_VARIANTS}
                initial="init"
                whileInView="view"
@@ -152,12 +157,7 @@ export function ProjectList() {
                   <ProjectCard
                      key={project.title}
                      className="mb-4 break-inside-avoid"
-                     image={project.image}
-                     title={project.title}
-                     date={project.date}
-                     link={project.link}
-                     tech={project.tech}
-                     role={project.role}
+                     {...project}
                   />
                ))}
             </MotionDiv>
