@@ -6,7 +6,7 @@ import { TypeText } from './Motion/TypeText'
 const CONTENTS = [
    {
       title: 'Core Impact',
-      content: '15+ Production Apps Released',
+      content: '20개 이상 SI, 솔루션 개발 및 유지보수',
    },
    {
       title: 'FrontEnd',
@@ -18,12 +18,12 @@ const CONTENTS = [
    },
    {
       title: 'Global Architecture Lead',
-      content: 'Next.js 기반 i18n 다국어 시스템\n구축 및 다양한 글로벌 프로덕트의 기술 고도화 주도',
+      content: 'Next.js 기반 i18n 다국어 시스템\n구축 및 다양한 글로벌 프로덕트 웹 제작',
    },
    {
       title: 'OSS Validator & Contributor',
       content:
-         'Devup UI / Vespera 등 사내 오픈소스의\n실서비스 최적화 및 개발자 경험(DX) 향상을 위한\n인터페이스 설계 참여',
+         'Devup UI / Vespera 등 오픈소스의\n실서비스 최적화 및 개발자 경험(DX) 향상을 위한\n인터페이스 설계 참여',
    },
 ]
 
@@ -79,7 +79,7 @@ export function IntroSection() {
             >
                <Link
                   href="mailto:xogus4026@gmail.com"
-                  className="font-mono text-xs text-zinc-400 transition-colors duration-200 hover:text-white md:text-sm"
+                  className="font-mono text-xs text-zinc-400 underline transition-colors duration-200 hover:text-white md:text-sm"
                >
                   xogus4026@gmail.com
                </Link>
@@ -88,7 +88,7 @@ export function IntroSection() {
                   href="https://github.com/belltalion"
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="font-mono text-xs text-zinc-400 transition-colors duration-200 hover:text-white md:text-sm"
+                  className="font-mono text-xs text-zinc-400 underline transition-colors duration-200 hover:text-white md:text-sm"
                >
                   github/belltalion
                </Link>
