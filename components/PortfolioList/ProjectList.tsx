@@ -28,6 +28,18 @@ const PROJECTS = [
       tag: ['SI'],
    },
    {
+      title: '브레일리파이스튜디오(터칭메모리) - 점역 및 점자 문서 인쇄 솔루션 RnD',
+      date: '2025.11 - present',
+      desc: [
+         '점자 번역 및 점자 문서 에디터 브레일리파이스튜디오 웹 사이트 제작 연구 개발사업',
+         '점자 번역 오픈소스 라이브러리 Braillify 제작',
+         'Figma 라이크 다중 유저 접속 및 에디팅 웹소켓 연동',
+      ],
+      role: '풀스택',
+      tech: ['Rust, Python, Axum, Next.js, Typescript'],
+      tag: ['솔루션'],
+   },
+   {
       title: '개발일보 - 온라인 언론사 웹 사이트 구축',
       date: '2025.09 - 2025.10',
       link: 'https://play.google.com/store/apps/details?id=com.syworks.roundtable&hl=ko',
